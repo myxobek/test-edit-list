@@ -68,7 +68,24 @@ class Checklist
     {
         $db = Db::getConnection();
 
-        $result = $db->query('DELETE FROM checklist WHERE id = ' . $id );
+        $result = $db->query('DELETE FROM checklist WHERE checklist.id = ' . $id );
+
+        return !!$result;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @param $id
+     * @param $string
+     *
+     * @return bool
+     */
+    public static function changeRow( $id, $string )
+    {
+        $db = Db::getConnection();
+
+        $result = $db->query('UPDATE checklist SET string = "' . $string . '" WHERE id = ' . $id );
 
         return !!$result;
     }

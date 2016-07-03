@@ -66,8 +66,14 @@ class ChecklistController
      */
     public function actionAjaxCheck()
     {
-        echo(1);
-        die();
+        $result = Checklist::getList();
+
+        header('Content-Type: application/json');
+        echo json_encode(
+            [
+                'result'    => $result
+            ]
+        );
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,8 +83,17 @@ class ChecklistController
      */
     public function actionAjaxChange()
     {
-        echo(1);
-        die();
+        $id     = Filter::sanitize( $_POST['id'] );
+        $string = Filter::sanitize( $_POST['string'] );
+
+        $result = Checklist::changeRow( $id, $string );
+
+        header('Content-Type: application/json');
+        echo json_encode(
+            [
+                'result'    => $result
+            ]
+        );
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

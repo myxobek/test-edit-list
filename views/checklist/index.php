@@ -56,9 +56,9 @@
                 $tmp .=
                     '<div class="row padbot10">'.
                         '<div class="col-md-12">'.
-                            '<div class="input-group">'.
+                            '<div class="input-group" data-id="' . $item['id'] . '">'.
                                 '<span class="input-group-btn">'.
-                                    '<button type="button" class="btn btn-default btn-number checklist-remove" data-id="' . $item['id'] . '">'.
+                                    '<button type="button" class="btn btn-default btn-number checklist-remove">'.
                                         '<span class="glyphicon glyphicon-minus"></span>'.
                                     '</button>'.
                                 '</span>'.
