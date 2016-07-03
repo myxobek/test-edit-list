@@ -1,8 +1,9 @@
 <?php
 
-return array(
-			'host' => 'localhost',
-			'dbname' => 'php_base',
-			'user' => 'root',
-			'password' => '',
-);
+return
+[
+			'host' 		=> 'localhost',
+			'dbname' 	=> 'test_edit_list_db',
+			'user' 		=> 'root',
+			'password' 	=> '55555',
+];

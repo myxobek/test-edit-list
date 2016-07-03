@@ -8,6 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <link href="/template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/template/css/checklist/index.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +21,7 @@
     <script src="/template/js/jquery-1.11.3.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/template/js/bootstrap.min.js"></script>
-    <script src="/template/js/list/index.js"></script>
+    <script src="/template/js/checklist/index.js"></script>
 </head>
 <body>
 <div class="container">
@@ -31,23 +32,45 @@
     </div>
     <div class="row">
         <div class="col-md-1">
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" id="checklist-add">
                 <span class="glyphicon glyphicon-plus"></span> Добавить новую строку
             </button>
         </div>
     </div>
     <hr>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default btn-number">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-                </span>
-                <input class="form-control input-number">
-            </div>
-        </div>
+    <div id="checklist-container">
+    <?php
+        $tmp = '';
+
+        if ( count( $checklist ) === 0 )
+        {
+            $tmp =
+                '<div class="row" id="message-empty">' .
+                    '<div class="col-md-12">Ничего нет...</div>' .
+                '</div>';
+        }
+        else
+        {
+            foreach ($checklist as $item)
+            {
+                $tmp .=
+                    '<div class="row padbot10">'.
+                        '<div class="col-md-12">'.
+                            '<div class="input-group">'.
+                                '<span class="input-group-btn">'.
+                                    '<button type="button" class="btn btn-default btn-number checklist-remove" data-id="' . $item['id'] . '">'.
+                                        '<span class="glyphicon glyphicon-minus"></span>'.
+                                    '</button>'.
+                                '</span>'.
+                                '<input class="form-control input-number checklist-input-change" placeholder="Начните писать" value="' . $item['string'] . '">'.
+                            '</div>'.
+                        '</div>'.
+                    '</div>';
+            }
+        }
+
+        echo( $tmp );
+    ?>
     </div>
 </div>
 </body>

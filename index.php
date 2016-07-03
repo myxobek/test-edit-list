@@ -26,6 +26,8 @@ error_reporting(E_ALL);
 define('ROOT', dirname(__FILE__));
 require_once(ROOT.'/components/Router.php');
 require_once(ROOT.'/components/Db.php');
+require_once(ROOT.'/components/Filter.php');
+require_once(ROOT.'/lib/show.php');
 
 // 3. Установка соединения с БД
 
